@@ -45,16 +45,16 @@ class DamasChinasEstado:
                     gano1+=1
 
         if (gano1 == self.fichas):
-            return "GANO 1"
+            return 1
         if (gano2 == self.fichas):
-            return "GANO 2"
+            return 2
 
         # os.system('clear')
         # for fila in self.grilla:
         #     print(fila)
 
         #time.sleep(0.0005)
-        return "empate..."
+        return 0
 
     def getSuccessors(self):
 
@@ -109,6 +109,26 @@ class DamasChinasEstado:
                 if self.grilla[i][j] == player:
                     generateMoves(self.grilla, i, j, successors)
         return successors
+
+
+    def qFunction(self,jugador,weights):
+
+            def rsa(self,successors):
+                winner = self.whoWins()
+                if (jugador.jugador == winner):
+                    return 1
+                else if (winner == 0):
+                    return 0
+                else return -1 
+
+            def maxQ(self,successors):
+                winner = self.whoWins()
+                if (jugador.jugador == winner):
+                    return 1
+                else if (winner == 0):
+                    return 0
+                else return -1     
+                             
 
     def evalFunction(self,jugador,weights):
 

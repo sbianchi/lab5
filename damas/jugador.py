@@ -9,7 +9,7 @@ from damaschinas import *
 #Funcion que llama un jugador para mover una pieza del tablero
 
 def move(estado,jugador,tipo,weights):
-    def randomSearch(estado,jugador):
+    def qLearning(estado,jugador):
         result = [1,1,1,1,random.randint(0,100)]
         return result
     def smartSearch(estado,jugador,weights):

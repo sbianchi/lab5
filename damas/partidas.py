@@ -35,7 +35,7 @@ for i in range(1,101):
             estado_juego=jugador2.play(estado_juego)
             j=1    
         
-        if (estado_juego.whoWins() != "empate..."):
+        if (estado_juego.whoWins()):
             for fila in estado_juego.grilla:
                 print(fila)
             break
