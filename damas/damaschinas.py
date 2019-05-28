@@ -3,18 +3,21 @@ import random
 from copy import deepcopy
 import os
 import time
+import pdb
+from redneuronal import *
 
 # Clase DamasChinasEstado que representa al tablero, los posibles movimientos, y la evaluacion de cada tablero
 
 class DamasChinasEstado:  
 
-    def __init__(self,grilla,lado,fichas,jugador,movimientos):
+    def __init__(self,grilla,lado,fichas,jugador,movimientos,red):
         self.grilla = grilla
         self.lado = lado
         self.fichas = fichas
         self.largo = len(self.grilla)
         self.jugador = jugador
         self.movimientos = movimientos
+        self.red = red
 
     def esFinal(self):
         gano1 = 0
@@ -111,23 +114,28 @@ class DamasChinasEstado:
         return successors
 
 
-    def qFunction(self,jugador,weights):
+    def qFunction(self,jugador):
 
-            def rsa(self,successors):
-                winner = self.whoWins()
-                if (jugador.jugador == winner):
-                    return 1
-                else if (winner == 0):
+        def rsa(jugador):
+            winner = self.whoWins()
+            if (jugador == winner):
+                red.train()
+                return 1
+            else: 
+                if (winner == 0):
                     return 0
-                else return -1 
+                else:
+                    red.train()
+                    return -1 
 
-            def maxQ(self,successors):
-                winner = self.whoWins()
-                if (jugador.jugador == winner):
-                    return 1
-                else if (winner == 0):
-                    return 0
-                else return -1     
+        def maxQ(jugador):
+            X
+            return red.eval(X,Y)
+
+        if self.esFinal():
+            return [1,0,0,0,2000]
+        #pdb.set_trace()
+        return [1,0,0,0,rsa(jugador)+maxQ(jugador)]
                              
 
     def evalFunction(self,jugador,weights):

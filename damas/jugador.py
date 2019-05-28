@@ -10,8 +10,7 @@ from damaschinas import *
 
 def move(estado,jugador,tipo,weights):
     def qLearning(estado,jugador):
-        result = [1,1,1,1,random.randint(0,100)]
-        return result
+        return estado.qFunction(jugador)
     def smartSearch(estado,jugador,weights):
         return estado.evalFunction(jugador,weights)
 
@@ -21,7 +20,7 @@ def move(estado,jugador,tipo,weights):
         if tipo == 'smart':
             score = smartSearch(successor,jugador,weights)
         else:
-            score = randomSearch(successor,jugador)
+            score = qLearning(successor,jugador)
         if (score[4] > maxval):
             maxval, bestMove = score[4],successor
     return bestMove
@@ -36,6 +35,4 @@ class player():
         
     def play(self,estado):
         return move(estado,self.jugador,self.tipo,self.weights)
-        
-    def weights(self,ws):
-        self.weights = ws    
+          
